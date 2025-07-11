@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    height: 100vh;
+    background: url('petimage.png') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: rgba(0, 0, 0, 0.5);
+    color: rgb(244, 236, 236);
+  }
+  
+  header .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: rgb(245, 237, 237);
+    padding: 6px 14px;
+    border-radius: 4px;
+    transition: 0.3s;
+  }
+  
+  nav a:hover,
+  .login-btn {
+    background-color: rgb(250, 244, 244);
+    color: #000;
+  }
+  
+  .container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-box {
+    background: rgba(113, 44, 44, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    width: 350px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    color: #0e0d0d;
+  }
+  
+  .form-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0f0c0c;
+  }
+  
+  .input-box {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  .input-box label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  
+  .input-box input {
+    width: 100%;
+    padding: 10px 35px 10px 10px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #100f0f;
+  }
+  
+  .input-box i {
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    color: #fff;
+  }
+  
+  .checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+  
+  .checkbox input {
+    margin-right: 10px;
+  }
+  
+  .register-btn {
+    width: 100%;
+    padding: 10px;
+    background: #0a0a0a;
+    border: none;
+    border-radius: 5px;
+    color: #fdf9f9;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .register-btn:hover {
+    background: #333;
+  }
+  
+  .login-link {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .login-link a {
+    color: #2b2a2a;
+    text-decoration: underline;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+  }
