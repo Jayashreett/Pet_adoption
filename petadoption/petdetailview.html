@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Paws - Pet Adoption List</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf6f0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ff6f61;
+      margin-bottom: 30px;
+    }
+
+    .pet-card {
+      display: flex;
+      align-items: center;
+      margin: 15px auto;
+      padding: 20px;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .pet-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+
+    .pet-details h3 {
+      margin: 0 0 5px;
+      color: #ff6f61;
+    }
+
+    .pet-details p {
+      margin: 2px 0;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      font-weight: bold;
+      color: #ff6f61;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    .adopt-btn {
+  margin-top: 15px;
+  padding: 10px 24px;
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 111, 97, 0.4);
+  transition: all 0.3s ease;
+}
+
+.adopt-btn:hover {
+  background-color: #ff3b2f;
+  box-shadow: 0 6px 16px rgba(255, 59, 47, 0.5);
+  transform: translateY(-2px);
+}
+
+  </style>
+</head>
+<body>
+
+  <h1>🐾 Pets Available for Adoption</h1>
+
+  <div id="petListContainer">
+    <!-- Pets will be loaded here -->
+  </div>
+
+  <a class="back-link" href="index.html">← Back to Home</a>
+
+  <script>
+    // Load pet data via AJAX
+    fetch("petdetailview.php")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("petListContainer").innerHTML = data;
+      })
+      .catch(error => {
+        document.getElementById("petListContainer").innerHTML = "<p>❌ Failed to load pet data.</p>";
+        console.error("Error:", error);
+      });
+  </script>
+
+</body>
+</html>

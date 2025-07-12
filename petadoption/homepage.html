@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Paws - Pet Adoption</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf6f0;
+      color: #333;
+    }
+
+    nav {
+      background-color: #fff;
+      padding: 15px 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff6f61;
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      color: #ff6f61;
+    }
+
+    header {
+      background: url('https://images.unsplash.com/photo-1601758003122-58e5f1a2bfa4') no-repeat center/cover;
+      height: 100vh;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+      padding: 0 20px;
+      margin-top: 60px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      text-shadow: 2px 2px 8px #000;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      margin: 1rem 0 2rem;
+      text-shadow: 1px 1px 5px #000;
+    }
+
+    header a {
+      padding: 15px 30px;
+      background-color: #ff6f61;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      border-radius: 30px;
+      transition: background-color 0.3s;
+    }
+
+    header a:hover {
+      background-color: #ff3b2f;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .form-section,
+    .pet-list-section {
+      display: none;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    .form-section h2,
+    .pet-list-section h2 {
+      margin-bottom: 20px;
+      text-align: center;
+      color: #ff6f61;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    form input[type="text"],
+    form input[type="number"],
+    form input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    form button {
+      padding: 12px 25px;
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    form button:hover {
+      background-color: #ff3b2f;
+    }
+
+    .pet-card {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      background-color: #fffaf7;
+    }
+
+    .pet-card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+
+    .pet-details h3 {
+      margin-bottom: 5px;
+      color: #ff6f61;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background-color: #ff6f61;
+      color: white;
+      font-size: 1rem;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        margin-top: 10px;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      header p {
+        font-size: 1.1rem;
+      }
+
+      .pet-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .pet-card img {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-brand">Happy Paws</div>
+    <div class="nav-links">
+      <a onclick="showSection('give')">Give a Pet for Adoption</a>
+      <a onclick="showSection('adopt')">Adopt a Pet</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Welcome to Happy Paws</h1>
+    <p>Helping pets find loving homes</p>
+    <a href="#forms" onclick="showSection('adopt')">Adopt Now</a>
+  </header>
+
+  <section id="forms">
+    <!-- Give a Pet for Adoption Form -->
+    <div id="giveForm" class="form-section">
+      <h2>Give a Pet for Adoption</h2>
+      <form action="petdetail.php" method="POST" enctype="multipart/form-data">
+        <label for="ownerName">Owner Name</label>
+        <input type="text" id="ownerName" name="ownerName" required />
+
+        <label for="petName">Pet Name</label>
+        <input type="text" id="petName" name="petName" required />
+
+        <label for="petType">Pet Type</label>
+        <input type="text" id="petType" name="petType" required />
+
+        <label for="petAge">Pet Age</label>
+        <input type="number" id="petAge" name="petAge" required />
+
+        <label for="phonenumber">Phone Number</label>
+        <input type="text" id="phonenumber" name="phonenumber" required />
+
+        <label for="petImage">Upload Pet Image</label>
+        <input type="file" id="petImage" name="petImage" accept="image/*" required />
+
+        <button type="submit">Submit for Adoption</button>
+      </form>
+    </div>
+
+    <!-- Pet List for Adoption -->
+    <div id="petListSection" class="pet-list-section">
+      <h2>Available Pets for Adoption</h2>
+      <div id="petListContainer">
+        <!-- Dynamic content from petdetailview.php will load here -->
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Happy Paws | All rights reserved
+  </footer>
+
+  <script>
+    function showSection(type) {
+      const giveForm = document.getElementById('giveForm');
+      const petListSection = document.getElementById('petListSection');
+      const petListContainer = document.getElementById('petListContainer');
+
+      if (type === 'give') {
+        giveForm.style.display = 'block';
+        petListSection.style.display = 'none';
+        giveForm.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        giveForm.style.display = 'none';
+        petListSection.style.display = 'block';
+        petListSection.scrollIntoView({ behavior: 'smooth' });
+
+        // Load pets dynamically
+        fetch('petdetailview.php')
+          .then(response => response.text())
+          .then(data => {
+            petListContainer.innerHTML = data;
+          })
+          .catch(error => {
+            petListContainer.innerHTML = "<p style='color:red;'>❌ Failed to load pet data.</p>";
+            console.error("Error loading pet data:", error);
+          });
+      }
+    }
+  </script>
+
+</body>
+</html>
